@@ -32,8 +32,8 @@ allprojects {
 publishing {
     publications {
         release(MavenPublication) {
-            groupId = 'com.github.mhiew'
-            artifactId = 'android-pdf-viewer'
+            groupId = 'com.github.barteksc'
+            artifactId = 'pdfviewer'
             version = '3.0.0'
 
             afterEvaluate {
