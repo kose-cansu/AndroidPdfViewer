@@ -2,7 +2,10 @@ apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion rootProject.tools.compileSdk
-
+    repositories {
+        google()
+        mavenCentral()
+    }
     defaultConfig {
         minSdkVersion rootProject.tools.minSdk
         targetSdkVersion rootProject.tools.targetSdk
@@ -15,6 +18,14 @@ android {
 dependencies {
     implementation 'androidx.core:core:1.7.0'
     api 'com.github.mhiew:pdfium-android:1.9.2'
+}
+
+allprojects {
+    repositories {
+        google()
+        gradlePluginPortal()
+        maven { url 'https://jitpack.io' }
+    }
 }
 
 // Maven Publishing
