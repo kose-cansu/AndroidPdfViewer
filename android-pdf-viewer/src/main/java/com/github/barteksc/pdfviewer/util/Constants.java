@@ -27,10 +27,10 @@ public class Constants {
      * Tinier : a little bit slower to have the whole page rendered but more reactive.
      * Bigger : user will have to wait longer to have the first visual results
      */
-    public static float PART_SIZE = 900;
+    public static float PART_SIZE = 700;
 
     /** Part of document above and below screen that should be preloaded, in dp */
-    public static int PRELOAD_OFFSET = 20;
+    public static int PRELOAD_OFFSET = 200;
 
     public static class Cache {
 
