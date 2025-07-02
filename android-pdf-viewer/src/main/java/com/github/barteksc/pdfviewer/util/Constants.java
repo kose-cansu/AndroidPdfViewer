@@ -27,10 +27,10 @@ public class Constants {
      * Tinier : a little bit slower to have the whole page rendered but more reactive.
      * Bigger : user will have to wait longer to have the first visual results
      */
-    public static float PART_SIZE = 300;
+    public static float PART_SIZE = 900;
 
     /** Part of document above and below screen that should be preloaded, in dp */
-    public static int PRELOAD_OFFSET = 15;
+    public static int PRELOAD_OFFSET = 10;
 
     public static class Cache {
 
@@ -42,7 +42,7 @@ public class Constants {
 
     public static class Pinch {
 
-        public static float MAXIMUM_ZOOM = 10;
+        public static float MAXIMUM_ZOOM = 6;
 
         public static float MINIMUM_ZOOM = 1;
 
