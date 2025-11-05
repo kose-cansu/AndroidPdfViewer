@@ -3,7 +3,7 @@ plugins {
     id 'maven-publish'
 }
 
-group "com.github.marain87"
+group = "com.github.kose-cansu"
 
 android {
     namespace "com.github.barteksc.pdfviewer"
@@ -13,7 +13,6 @@ android {
     defaultConfig {
         minSdk rootProject.tools.minSdk
         targetSdk rootProject.tools.targetSdk
-
     }
 
     buildTypes {
@@ -29,11 +28,9 @@ android {
     }
 
     publishing {
-        publishing {
-            singleVariant("release") {
-                withSourcesJar()
-                withJavadocJar()
-            }
+        singleVariant("release") {
+            withSourcesJar()
+            withJavadocJar()
         }
     }
 }
@@ -46,9 +43,9 @@ dependencies {
 publishing {
     publications {
         release(MavenPublication) {
-            groupId = 'com.github.marain87'
+            groupId = 'com.github.kose-cansu'
             artifactId = 'AndroidPdfViewer'
-            version = "3.2.8"
+            version = '3.2.8'
 
             afterEvaluate {
                 from components.release
