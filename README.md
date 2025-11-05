@@ -13,15 +13,27 @@ Library for displaying PDF documents on Android, with `animations`, `gestures`, 
 It is based on [PdfiumAndroid](https://github.com/barteksc/PdfiumAndroid) for decoding PDF files. Works on API 11 (Android 3.0) and higher.
 Licensed under Apache License 2.0.
 
-## 3.2.0-beta.3
-* Change minimum SDK version to 19
+## 3.2.8
+* upgrade gradle plugin
+* Update [PdfiumAndroid library](https://github.com/marain87/PdfiumAndroid) to 1.9.8
+
+## 3.2.6
+* upgrade gradle plugin and ndk to support for 16KB Page Size
+* Update [PdfiumAndroid library](https://github.com/marain87/PdfiumAndroid) to 1.9.6
+
+## 3.2.4
+* Update [PdfiumAndroid library](https://github.com/lion1988dev/PdfiumAndroid) to 1.9.4
+
+
+## 3.2.3
+* Change minimum SDK version to 21
+* Update [PdfiumAndroid library](https://github.com/lion1988dev/PdfiumAndroid) to 1.9.3
+
+## 3.2.1
+* Change minimum SDK version to 23
 * Drop MIPS support
 * Update to Androidx
-* Switch pdfium-android to a [fork](https://github.com/mhiew/PdfiumAndroid) so we can disable jetifier
-
-## 3.2.0-beta.2
-* Fix a potential NPE due to out of sync render thread management [Pull Request](https://github.com/barteksc/AndroidPdfViewer/pull/824)
-* Update the sample app configuration so that it can compile [Pull Request](https://github.com/mhiew/AndroidPdfViewer/pull/2)
+* Switch pdfium-android to a [fork](https://github.com/lion1988dev/PdfiumAndroid) so we can disable jetifier
 
 ## What's new in 3.2.0-beta.1?
 * Merge PR #714 with optimized page load
@@ -46,19 +58,19 @@ Licensed under Apache License 2.0.
 
 ## Installation
 
-Add to _build.gradle_:
-
+Add to the root _build.gradle_:
 ```groovy
-allprojects {
-  repositories {
-    ...
-    mavenCentral()
-    ...
-  }
-}
+dependencyResolutionManagement {
+		repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+		repositories {
+			mavenCentral()
+			maven { url 'https://jitpack.io' }
+		}
+	}
 ```
+Add to the app _build.gradle_:
 
-`implementation 'com.github.mhiew:android-pdf-viewer:3.2.0-beta.3'`
+`implementation 'com.github.marain87:AndroidPdfViewer:3.2.8'`
 
 ## ProGuard
 If you are using ProGuard, add following rule to proguard config file:
