@@ -15,6 +15,10 @@
  */
 package com.github.barteksc.pdfviewer.util;
 
+import android.content.Context;
+import android.util.DisplayMetrics;
+import android.util.Log;
+
 public class Constants {
 
     public static boolean DEBUG_MODE = false;
@@ -27,7 +31,43 @@ public class Constants {
      * Tinier : a little bit slower to have the whole page rendered but more reactive.
      * Bigger : user will have to wait longer to have the first visual results
      */
-    public static float PART_SIZE = 700;
+    // Temel değer
+    private static final float BASE_PART_SIZE = 256;
+
+    // Dinamik olarak hesaplanacak
+    public static float PART_SIZE = BASE_PART_SIZE;
+
+    /**
+     * Cihaz özelliklerine göre PART_SIZE'ı ayarla
+     * Activity veya Application onCreate'de çağırılmalı
+     */
+    public static void initPartSize(Context context) {
+        DisplayMetrics metrics = context.getResources().getDisplayMetrics();
+        float density = metrics.density;
+        int screenWidth = metrics.widthPixels;
+
+        // Düşük yoğunluklu cihazlar için küçük PART_SIZE
+        if (density <= 1.5f || screenWidth < 720) {
+            PART_SIZE = 256;
+        }
+        // Orta yoğunluklu cihazlar
+        else if (density <= 2.0f || screenWidth < 1080) {
+            PART_SIZE = 384;
+        }
+        // Yüksek yoğunluklu cihazlar
+        else if (density <= 3.0f || screenWidth < 1440) {
+            PART_SIZE = 512;
+        }
+        // Çok yüksek yoğunluklu cihazlar
+        else {
+            PART_SIZE = 700;
+        }
+
+        if (DEBUG_MODE) {
+            Log.d("Constants", "PART_SIZE set to: " + PART_SIZE +
+                    " (density: " + density + ", width: " + screenWidth + ")");
+        }
+    }
 
     /** Part of document above and below screen that should be preloaded, in dp */
     public static int PRELOAD_OFFSET = 10;
